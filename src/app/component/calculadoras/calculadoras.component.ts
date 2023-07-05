@@ -49,6 +49,15 @@ export class CalculadorasComponent implements OnInit {
       this.valor = params.get('valor');
     });
   }
+  toggleCalculator() {
+    this.cerrarCalculadora = !this.cerrarCalculadora;
+  }
+  toggleIntecambiosHidratos(){
+    this.cerrarIntercambiosHidratos = !this.cerrarIntercambiosHidratos;
+  }
+  toogleIntercambiosProteinas(){
+    this.cerrarIntercambiosProteinas = !this.cerrarIntercambiosProteinas;
+  }
 
   balls: boolean = false;
   calcular(valor: any): void {
@@ -62,14 +71,7 @@ export class CalculadorasComponent implements OnInit {
     } else if (valor === 'imc') {
       this.balls = !this.balls;
       this.resultado = this.peso / ((this.altura / 100) * (this.altura / 100));
-      this.iaResponse.getRecomendacionesIMC(this.resultado).subscribe(
-        (Response) => {
-          this.balls = !this.balls;
-          this.iaR = Response.answer;
-          console.log(Response);
-        }, (error) => {
-          console.log(error);
-        })
+
     } else if (valor === 'pliegues') {
       this.sumatorio = this.pliegueabdominal + this.plieguebicipal + this.plieguecuadricipital + this.pliegueperoneal + this.pliguesubescapular + this.plieguetricipital + this.plieguesuprailiaco;
       if (this.genero == 0) {//mujer
@@ -92,19 +94,22 @@ export class CalculadorasComponent implements OnInit {
       this.resultado *= this.nivelActividad;
 
       this.grasa = 100 - (this.proteina + this.hidrato);
+      this.toggleCalculator();
+      this.toggleIntecambiosHidratos();
+
     }
 
   }
 
 
-  lacteosenteros:number=0;
-  lacteossemidesnatados:number=0;
-  lacteosdesnatados:number=0;
-  lacteosazucarados:number=0;
-  postreslacteos:number=0;
-  hortalizasyverduras:number=0;
-  fruta:number=0;
-  azucares:number=0;
+  lacteosenteros!:number;
+  lacteossemidesnatados!:number;
+  lacteosdesnatados!:number;
+  lacteosazucarados!:number;
+  postreslacteos!:number;
+  hortalizasyverduras!:number;
+  fruta!:number;
+  azucares!:number;
 
 
 
@@ -138,15 +143,17 @@ export class CalculadorasComponent implements OnInit {
     ((this.fruta !== 0) ? (this.fruta*1) : 0)
       +((this.gramoHidratos-this.cereales)/14);
 
+      this.toggleIntecambiosHidratos();
+
      this.calcularIntercambiosProteinas();
 
   }
 
-  alimentosproteicosI:number = 0;
-  alimentosproteicosII:number = 0;
-  alimentosproteicosIII:number = 0;
-  alimentosproteicosIV:number = 0;
-  alimentosproteicosV:number = 0;
+  alimentosproteicosI!:number;
+  alimentosproteicosII!:number;
+  alimentosproteicosIII!:number;
+  alimentosproteicosIV!:number;
+  alimentosproteicosV!:number;
 
   intercambiosProteinas!:number;
   proteinasRestantes:number = 0;
@@ -157,6 +164,8 @@ export class CalculadorasComponent implements OnInit {
 
 
     this.intercambiosProteinas = (this.gramoProteinas-this.proteinasRestantes)/7;
+    this.toogleIntercambiosProteinas();
+
      this.calcularIntercambiosGrasas();
   }
 

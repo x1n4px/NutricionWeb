@@ -91,7 +91,11 @@ export class RecipesService {
         bariatrica: false,
         lcd: false
       }
-    },
+    }
+  ]
+
+  /*
+  ,
     {
       imagen: "",
       titulo: "",
@@ -112,22 +116,20 @@ export class RecipesService {
         bariatrica: false,
         lcd: false
       }
-    }
-  ]
-
+    }*/
   constructor() {
-    localStorage.setItem(this.localStorageKey, JSON.stringify(this.recet));
-    this.recetas = this.getRecetasFromLocalStorage();
+    //localStorage.setItem(this.localStorageKey, JSON.stringify(this.recet));
+    //this.recetas = this.getRecetasFromLocalStorage();
   }
 
 
   getReceta(): any[] {
-    return this.recetas;
+    return this.recet;
   }
 
   agregarReceta(nuevaReceta: any): void {
-    this.recetas.push(nuevaReceta);
-    this.saveRecetasToLocalStorage();
+    this.recet.push(nuevaReceta);
+    //this.saveRecetasToLocalStorage();
   }
 
   private getRecetasFromLocalStorage(): any[] {
@@ -140,11 +142,11 @@ export class RecipesService {
   }
 
   eliminarReceta(receta: any): void {
-    const index = this.recetas.indexOf(receta);
+    const index = this.recet.indexOf(receta);
     if (index !== -1) {
-      this.recetas.splice(index, 1);
+      this.recet.splice(index, 1);
     }
 
-    this.saveRecetasToLocalStorage();
+    //this.saveRecetasToLocalStorage();
   }
 }

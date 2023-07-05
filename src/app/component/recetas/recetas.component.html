@@ -17,28 +17,58 @@
         y VLCD</button>
       <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'todos'}"
         (click)="selectButton('todos')">Mostrar todos</button>
-      <button class="btn-aniadir" (click)="addNewRecipeModal()">+</button>
+      <button *ngIf="logged" class="btn-aniadir" (click)="addNewRecipeModal()">+</button>
+
     </div>
 
     <div class="card-container" *ngIf="selectedButton === 'todos'">
-      <a class="card" *ngFor="let dato of datos" [href]="'receta/' + dato.titulo" target="_blank">
-        <img src="{{dato.imagen}}" alt="Imagen">
-        <h2>{{dato.titulo}}</h2>
-        <p>Macros: P: {{dato.macronutrientes.proteinas}} G: {{dato.macronutrientes.grasas}} HC:
-          {{dato.macronutrientes.HC}}</p>
-          <button *ngIf="logged" (click)="eliminarReceta(dato)">Eliminar</button>
+      <div class="card" *ngFor="let dato of datos" target="_blank">
+        <a class="card-a" [href]="'receta/' + dato.titulo">
+          <div class="card-image">
+            <img src="{{dato.imagen}}" alt="Imagen">
+          </div>
+          <div class="card-content">
+            <h2>{{dato.titulo}}</h2>
+            <p>Macros: P: {{dato.macronutrientes.proteinas}} G: {{dato.macronutrientes.grasas}} HC: {{dato.macronutrientes.HC}}</p>
+            <div class="btnBorradDiv" *ngIf="logged">
+              <button class="buttonOpt" (click)="eliminarReceta(dato)">
+                <svg viewBox="0 0 448 512" class="svgIcon">
+                  <path
+                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
 
-      </a>
+        </a>
 
+      </div>
     </div>
+
     <div class="card-container" *ngIf="selectedButton !== 'todos'">
-      <a class="card" *ngFor="let dato of recetasFiltradas" [href]="'receta/' + dato.titulo" target="_blank">
-        <img src="{{dato.imagen}}" alt="Imagen">
-        <h2>{{dato.titulo}}</h2>
-        <p>Macros: P: {{dato.macronutrientes.proteinas}} G: {{dato.macronutrientes.grasas}} HC:
-          {{dato.macronutrientes.HC}}</p>
-          <button *ngIf="logged" (click)="eliminarReceta(dato)">Eliminar</button>
-      </a>
+      <div class="card" *ngFor="let dato of recetasFiltradas" target="_blank">
+        <a class="card-a" [href]="'receta/' + dato.titulo">
+          <div class="card-image">
+            <img src="{{dato.imagen}}" alt="Imagen">
+          </div>
+          <div class="card-content">
+            <h2>{{dato.titulo}}</h2>
+            <p>Macros: P: {{dato.macronutrientes.proteinas}} G: {{dato.macronutrientes.grasas}} HC: {{dato.macronutrientes.HC}}</p>
+            <div class="btnBorradDiv" *ngIf="logged">
+              <button class="buttonOpt" (click)="eliminarReceta(dato)">
+                <svg viewBox="0 0 448 512" class="svgIcon">
+                  <path
+                    d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z">
+                  </path>
+                </svg>
+              </button>
+            </div>
+          </div>
 
+        </a>
+
+      </div>
     </div>
+
   </div>

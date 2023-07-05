@@ -13,8 +13,11 @@ import { AdminService } from 'src/app/service/admin.service';
 export class RecetasComponent {
   datos: any[] = [];
   logged: boolean = false;
+    selectedOption: string[] = [];
+
   constructor(public dialog: MatDialog, private recipeServ: RecipesService, private admin: AdminService) {
     this.datos = recipeServ.getReceta();
+    console.log(this.datos);
 
     if (this.admin.checkLogin()) {
       this.logged = true;

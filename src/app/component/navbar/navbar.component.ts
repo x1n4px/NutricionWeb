@@ -41,7 +41,7 @@ export class NavbarComponent {
   }
 
   go(route: string) {
-    this.showMenu = !this.showMenu;
+    //this.showMenu = !this.showMenu;
     if (route === 'recetas' || route === 'recomendaciones') {
       this.router.navigate([route]);
 

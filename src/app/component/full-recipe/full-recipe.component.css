@@ -3,11 +3,13 @@
   height: auto;
   display: flex;
   justify-content: center;
+  margin-top: 100px;
 }
 
 
 .interno {
   width: 80%;
+
 }
 
 header {
@@ -19,8 +21,8 @@ header {
 
 .contenido {
   margin-top: 20px;
-   width: 100%;
- }
+  width: 100%;
+}
 
 
 img {

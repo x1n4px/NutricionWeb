@@ -17,8 +17,7 @@ export class FullRecipeComponent {
     this.route.paramMap.subscribe(params => {
       this.nombreReceta = params.get('idReceta');
       this.Receta = this.reciperServ.getReceta().filter(receta => receta.titulo === this.nombreReceta);
-      console.log(this.Receta);
-      const enfermedad = this.Receta[0].enfermedad;
+       const enfermedad = this.Receta[0].enfermedad;
       this.selectedOption = Object.keys(enfermedad).filter((key) => enfermedad[key] === true);
       console.log(this.selectedOption);
     });
