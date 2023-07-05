@@ -1,0 +1,149 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  width: 100%;
+  height: 90vh;
+}
+
+.interior {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+
+
+.calculadora {
+  width: 60%;
+  height: auto;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+
+.calculadora form {
+  margin-bottom: 20px;
+}
+
+.calculadora label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.calculadora input[type="number"] {
+  width: 95%;
+  padding: 10px;
+  margin-bottom: 10px;
+}
+
+.calculadora .contenedor-botones {
+  display: flex;
+  justify-content: center;
+  padding: 30px;
+ }
+
+.calculadora .boton-genero {
+  padding: 10px 15px;
+  border: none;
+  border-radius: 5px;
+  background-color: #337ab7;
+  color: #ffffff;
+  cursor: pointer;
+  font-size: 1em;
+  margin-left: 20px;
+ }
+
+.calculadora .boton-genero.seleccionado {
+  background-color: #23527c;
+ }
+
+.calculadora .botones {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.calculadora .botones button {
+  padding: 10px 20px;
+  margin-right: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #337ab7;
+  color: #ffffff;
+  cursor: pointer;
+}
+
+.calculadora .botones button:last-child {
+  margin-right: 0;
+}
+
+.calculadora p {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+
+.recomendacionesIA{
+  padding: 60px;
+  font-size: 1em;
+}
+
+.balls{
+  width: 100%;
+  height: 400px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.loader {
+  display: inline-block;
+  margin-bottom: 50px;
+}
+
+.loader_ball {
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  background-color: #333;
+  margin-inline: 5px;
+  border-radius: 50%;
+  animation: bounce 450ms alternate infinite;
+
+}
+
+.loader_ball:nth-child(2) {
+  animation-delay: 150ms;
+}
+
+.loader_ball:nth-child(3) {
+  animation-delay: 300ms;
+}
+
+@keyframes bounce {
+  from {
+    transform: scaleX(1.25);
+  }
+  to{
+    transform: translateY(-50px)
+              scaleX(1);
+  }
+}
+
+@media (max-width: 1100px) {
+
+  .calculadora{
+    width: 100%;
+    height: auto;
+  }
+
+  .recomendacionesIA{
+    padding: 20px;
+    font-size: 1em;
+  }
+}
+

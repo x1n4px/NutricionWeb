@@ -1,0 +1,44 @@
+<div class="contenedor">
+  <div class="interno">
+    <div class="filtrado">
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'renal'}"
+        (click)="selectButton('renal')">Renal</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'diabetes'}"
+        (click)="selectButton('diabetes')">Diabetes</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'cardiovascular'}"
+        (click)="selectButton('cardiovascular')">Cardiovascular</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'hepatica'}"
+        (click)="selectButton('hepatica')">Hepática</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'intestinal'}"
+        (click)="selectButton('intestinal')">Intestinal</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'bariatica'}"
+        (click)="selectButton('bariatica')">Cirugía bariática</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'lcd'}" (click)="selectButton('LCD')">LCD
+        y VLCD</button>
+      <button class="btn-filtrado" [ngClass]="{'selected': selectedButton === 'todos'}"
+        (click)="selectButton('todos')">Mostrar todos</button>
+      <button class="btn-aniadir" (click)="addNewRecipeModal()">+</button>
+    </div>
+
+    <div class="card-container" *ngIf="selectedButton === 'todos'">
+      <a class="card" *ngFor="let dato of datos" [href]="'receta/' + dato.titulo" target="_blank">
+        <img src="{{dato.imagen}}" alt="Imagen">
+        <h2>{{dato.titulo}}</h2>
+        <p>Macros: P: {{dato.macronutrientes.proteinas}} G: {{dato.macronutrientes.grasas}} HC:
+          {{dato.macronutrientes.HC}}</p>
+          <button *ngIf="logged" (click)="eliminarReceta(dato)">Eliminar</button>
+
+      </a>
+
+    </div>
+    <div class="card-container" *ngIf="selectedButton !== 'todos'">
+      <a class="card" *ngFor="let dato of recetasFiltradas" [href]="'receta/' + dato.titulo" target="_blank">
+        <img src="{{dato.imagen}}" alt="Imagen">
+        <h2>{{dato.titulo}}</h2>
+        <p>Macros: P: {{dato.macronutrientes.proteinas}} G: {{dato.macronutrientes.grasas}} HC:
+          {{dato.macronutrientes.HC}}</p>
+          <button *ngIf="logged" (click)="eliminarReceta(dato)">Eliminar</button>
+      </a>
+
+    </div>
+  </div>

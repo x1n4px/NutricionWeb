@@ -1,0 +1,47 @@
+<nav class="navbar">
+  <div class="navbar-container">
+    <div class="navbar-left">
+      <div class="hamburger-menu" (click)="toggleMenu()">
+        <div class="bar"></div>
+        <div class="bar"></div>
+        <div class="bar"></div>
+      </div>
+      <a href=""><img class="logo" src="../../../assets/logo.webp" alt="Logo"></a>
+    </div>
+    <div class="navbar-right">
+      <div class="search-container" *ngIf="logged">
+        <p >Bienvenido, Admin</p>
+        <button (click)="adminUser()">cerrar sesión</button>
+      </div>
+      <div class="icon-container" *ngIf="logged">
+        <button (click)="adminUser()">Cerrar Sesión</button>
+      </div>
+    </div>
+
+  </div>
+  <div class="sidebar" [ngClass]="{'show': showMenu}">
+    <div class="sidebar-icon">
+      <mat-icon (click)="toggleMenu()">X</mat-icon>
+    </div>
+    <div class="sidebar-family">
+      <a (click)="selectItem(0)" [class.selected]="selectedIndex === 0">Calculadoras</a>
+      <a (click)="go('recetas')">Recetas</a>
+      <a (click)="go('recomendaciones')">recomendaciones</a>
+    </div>
+    <div class="sidebar-info">
+      <div class="informacion" *ngIf="selectedIndex === 0">
+        <a (click)="go('calorias')">Calculadora Calorias</a>
+        <a (click)="go('imc')">Calculadora IMC</a>
+        <a (click)="go('pliegues')">Calculadora pliegues</a>
+        <a (click)="go('intercambios')">Calculadora de dieta por intercambios</a>
+      </div>
+
+
+
+
+
+    </div>
+
+
+  </div>
+</nav>

@@ -1,0 +1,12 @@
+.componente {
+  width: 100%;
+  height: 80vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+input {
+  padding: 30px;
+  width: 400px;
+}

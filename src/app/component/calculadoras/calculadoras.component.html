@@ -1,0 +1,301 @@
+<div class="contenedor">
+  <div class="interior">
+    <div class="calculadora" *ngIf="valor === 'calorias'">
+      <form>
+        <label> Altura (en centímetros): </label>
+         <input type="number" [(ngModel)]="altura" name="altura" required>
+
+         <label> Peso (en kilogramos): </label>
+          <input type="number" [(ngModel)]="peso" name="peso" required>
+
+
+          <label> Edad: </label>
+          <input type="number" [(ngModel)]="edad" name="edad" required>
+
+
+          <label>Genero: </label>
+        <div class="contenedor-botones"  >
+          <button   (click)="genero = 1" class="boton-genero"   [class.seleccionado]="genero === 1">
+            <span>&#9794;</span> Masculino
+          </button>
+          <button   (click)="genero = 0" class="boton-genero"  [class.seleccionado]="genero === 0">
+            <span>&#9792;</span> Femenino
+          </button>
+        </div>
+
+
+        <br>
+
+         <label> Nivel de actividad física: </label>
+
+         <div class="contenedor-botones">
+          <button (click)="nivelActividad = 1.2" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.2"> Sedentario</button>
+          <button (click)="nivelActividad = 1.375" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.375"> poco </button>
+          <button (click)="nivelActividad = 1.55" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.55">medio </button>
+          <button (click)="nivelActividad = 1.725" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.725"> alto</button>
+          <button (click)="nivelActividad = 1.9" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.9">  elite
+          </button>
+
+         </div>
+
+        <br>
+        <div class="botones">
+          <button (click)="calcular('calorias')">Calcular</button>
+          <button type="reset">Limpiar</button>
+        </div>
+
+      </form>
+
+      <p *ngIf="resultado">Calorias de mantenimiento: {{resultado.toFixed(2)}} Kcal</p>
+      <p *ngIf="resultado">Calorias de deficit: {{(resultado-500).toFixed(2)}} Kcal</p>
+      <p *ngIf="resultado">Calorias de superávit: {{(resultado+500).toFixed(2)}} Kcal</p>
+
+
+
+    </div>
+
+    <div class="calculadora" *ngIf="valor === 'imc'">
+      <form>
+        <label> Altura (en centímetros): </label>
+         <input type="number" [(ngModel)]="altura" name="altura" required>
+
+         <label> Peso (en kilogramos): </label>
+          <input type="number" [(ngModel)]="peso" name="peso" required>
+
+
+        <br>
+        <div class="botones">
+          <button (click)="calcular('imc')">Calcular</button>
+          <button type="reset">Limpiar</button>
+        </div>
+
+      </form>
+
+      <p *ngIf="resultado">IMC: {{resultado.toFixed(1)}} </p>
+      <div class="balls" *ngIf="balls">
+        <span class="loader">
+          <span class="loader_ball"></span>
+          <span class="loader_ball"></span>
+          <span class="loader_ball"></span>
+        </span>
+        <h3 style="text-align: center;">Espere por favor, cargando sus recomendaciones!</h3>
+      </div>
+
+      <div [innerHTML]="iaR"></div>
+
+    </div>
+
+    <div class="calculadora" *ngIf="valor === 'pliegues'">
+         <form>
+
+            <label> Género: </label>
+            <select [(ngModel)]="genero" name="genero">
+              <option selected>Selecciona género</option>
+              <option value="1">Hombre</option>
+              <option value="0">Mujer</option>
+            </select>
+
+          <label> Edad: </label>
+           <input type="number" [(ngModel)]="edad" name="edad" required>
+
+           <label> Piegue bicipital : </label>
+            <input type="number" [(ngModel)]="plieguebicipal" name="plieguebicipal" required>
+
+            <label> Pliegue abdominal : </label>
+            <input type="number" [(ngModel)]="pliegueabdominal" name="pliegueabdominal" required>
+
+            <label> Piegue Cuadricipital : </label>
+            <input type="number" [(ngModel)]="plieguecuadricipital" name="plieguecuadricipital" required>
+
+            <label> Pliegue Peroneal : </label>
+            <input type="number" [(ngModel)]="pliegueperoneal" name="pliegueperoneal" required>
+
+            <label> Piegue Subescapular : </label>
+            <input type="number" [(ngModel)]="pliguesubescapular" name="pliguesubescapular" required>
+
+            <label> Pliegue Tricipital : </label>
+            <input type="number" [(ngModel)]="plieguetricipital" name="plieguetricipital" required>
+
+            <label> Pliegue Suprailiaco : </label>
+            <input type="number" [(ngModel)]="plieguesuprailiaco" name="plieguesuprailiaco" required>
+
+          <br>
+          <div class="botones">
+            <button (click)="calcular('pliegues')">Calcular</button>
+            <button type="reset">Limpiar</button>
+          </div>
+
+        </form>
+
+        <p *ngIf="resultado">Densidad Corporal: {{resultado.toFixed(3)}} </p>
+        <p *ngIf="resultado">Porcentaje de grasa corporal: {{porcentaje.toFixed(3)}}</p>
+
+     </div>
+     <div class="calculadora" *ngIf="valor === 'intercambios'">
+      <div  class="calculadoraCalorias" >
+        <form>
+          <label> Altura (en centímetros): </label>
+          <input type="number" [(ngModel)]="altura" name="altura" required>
+
+          <label> Peso (en kilogramos): </label>
+           <input type="number" [(ngModel)]="peso" name="peso" required>
+
+
+           <label> Edad: </label>
+           <input type="number" [(ngModel)]="edad" name="edad" required>
+
+
+
+          <label>Genero: </label>
+          <div class="contenedor-botones"  >
+            <button   (click)="genero = 1" class="boton-genero"   [class.seleccionado]="genero === 1">
+              <span>&#9794;</span> Masculino
+            </button>
+            <button   (click)="genero = 0" class="boton-genero"  [class.seleccionado]="genero === 0">
+              <span>&#9792;</span> Femenino
+            </button>
+          </div>
+
+
+          <br>
+
+           <label> Nivel de actividad física: </label>
+
+           <div class="contenedor-botones">
+            <button (click)="nivelActividad = 1.2" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.2"> <i class="fa-solid fa-person fa-xl" style="color: #ffffff;"></i> </button>
+            <button (click)="nivelActividad = 1.375" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.375"> <i class="fa-solid fa-person-walking fa-xl" style="color: #ffffff;"></i> </button>
+            <button (click)="nivelActividad = 1.55" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.55"> <i class="fa-solid fa-person-running fa-xl" style="color: #ffffff;"></i> </button>
+            <button (click)="nivelActividad = 1.725" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.725"> <i class="fa-solid fa-person-biking fa-xl" style="color: #ffffff;"></i></button>
+            <button (click)="nivelActividad = 1.9" class="boton-genero"  [class.seleccionado]="nivelActividad === 1.9">  <i class="fas fa-bolt fa-xl" style="color: #ffffff;"></i>
+            </button>
+
+           </div>
+
+
+
+          <label>% Proteinas: </label>
+          <input type="number" [(ngModel)]="proteina" name="proteina" required>
+          <div *ngIf="proteina < 5 || proteina > 30" style="color: red;">El valor debe estar entre 5% y 30%</div>
+
+           <label>% Hidratos: </label>
+           <input type="number" [(ngModel)]="hidrato" name="hidrato" required>
+           <div *ngIf="hidrato < 30 || hidrato > 60" style="color: red;">El valor debe estar entre 30% y 60%</div>
+
+
+           <div class="botones">
+            <button (click)="calcular('intercambios')">Calcular</button>
+            <button type="reset">Limpiar</button>
+          </div>
+        </form>
+
+
+
+      </div>
+      <p *ngIf="resultado">Calorias diarias: {{resultado.toFixed(3)}} Kcal    </p>
+      <p *ngIf="resultado"><strong>Proteinas</strong> {{proteina}}%: {{(resultado*(proteina/100)).toFixed(2)}} Kcal  -  {{((resultado*(proteina/100))/4).toFixed(0)}} Gramos</p>
+      <p *ngIf="resultado"><strong>Hidratos</strong> {{hidrato}}%: {{(resultado*(hidrato/100)).toFixed(2)}} Kcal  -  {{(resultado*(hidrato/100)/4).toFixed(0)}} Gramos</p>
+      <p *ngIf="resultado"><strong>Grasas</strong> {{grasa}}%: {{(resultado*(grasa/100)).toFixed(2)}} Kcal  -  {{((resultado*(grasa/100))/9).toFixed(0)}} Gramos</p>
+
+      <br>
+
+      <div  class="calculadoraCalorias" >
+
+      <form >
+         <label> lacteos Enteros </label>
+        <input type="number" [(ngModel)]="lacteosenteros" name="lacteosenteros" required>
+
+        <label>  lacteos Semidesnatados:  </label>
+         <input type="number" [(ngModel)]="lacteossemidesnatados" name="lacteossemidesnatados" required>
+
+
+         <label> lacteos Desnatados: </label>
+         <input type="number" [(ngModel)]="lacteosdesnatados" name="lacteosdesnatados" required>
+
+         <label>  lacteos azucarados:  </label>
+         <input type="number" [(ngModel)]="lacteosazucarados" name="lacteosazucarados" required>
+
+
+         <label> postres lacteos: </label>
+         <input type="number" [(ngModel)]="postreslacteos" name="postreslacteos" required>
+
+         <label> hortalizas y verduras: </label>
+         <input type="number" [(ngModel)]="hortalizasyverduras" name="hortalizasyverduras" required>
+
+
+         <label> fruta: </label>
+         <input type="number" [(ngModel)]="fruta" name="fruta" required>
+
+
+         <label> azucares: </label>
+         <input type="number" [(ngModel)]="azucares" name="azucares" required>
+
+
+
+
+
+         <div class="botones">
+          <button (click)="calcularIntercambiosHidratos()">Calcular</button>
+          <button type="reset">Limpiar</button>
+        </div>
+      </form>
+      </div>
+      <p *ngIf="intercambioHS"><strong>Intercambios de Hidratos: </strong>{{intercambioHS.toFixed(0)}}</p>
+      <p *ngIf="lacteosenteros">Intercambios de lacteos enteros: {{lacteosenteros}}</p>
+      <p *ngIf="lacteossemidesnatados">Intercambios de lacteos Semidesnatados {{lacteossemidesnatados}}</p>
+      <p *ngIf="lacteosdesnatados">Intercambios de lacteos desnatados: {{lacteosdesnatados}}</p>
+      <p *ngIf="lacteosazucarados">Intercambios de lacteos azucarados: {{lacteosazucarados}}</p>
+      <p *ngIf="postreslacteos">Intercambios de postres lacteos: {{postreslacteos}}</p>
+      <p *ngIf="hortalizasyverduras">Intercambios de verduras y hortalizas: {{hortalizasyverduras}}</p>
+      <p *ngIf="fruta">Intercambios de fruta: {{fruta}}</p>
+      <p *ngIf="azucares">Intercambios de azucares: {{azucares}}</p>
+
+
+      <p *ngIf="IntercambiosCereales">Intercambios de Cereales: {{IntercambiosCereales}}</p>
+
+      <p><strong>Intecambios de proteina: </strong>{{alimentosproteicosI+alimentosproteicosII+alimentosproteicosIII+alimentosproteicosIV+alimentosproteicosV}}</p>
+      <p *ngIf="alimentosproteicosI">Intercambios de alimentos proteicos I: {{alimentosproteicosI.toFixed(0)}}</p>
+      <p *ngIf="alimentosproteicosII">Intercambios de alimentos proteicos II: {{alimentosproteicosII.toFixed(0)}}</p>
+      <p *ngIf="alimentosproteicosIII">Intercambios de alimentos proteicos III: {{alimentosproteicosIII.toFixed(0)}}</p>
+      <p *ngIf="alimentosproteicosIV">Intercambios de alimentos proteicos IV: {{alimentosproteicosIV.toFixed(0)}}</p>
+      <p *ngIf="alimentosproteicosV">Intercambios de alimentos proteicos V: {{alimentosproteicosV.toFixed(0)}}</p>
+
+
+      <p *ngIf="intercambiosGrasas"><strong>Intercambios de Grasas:</strong>  {{intercambiosGrasas.toFixed(0)}}</p>
+
+      <div  class="calculadoraCalorias" >
+        <form >
+
+          <p><strong>Intercambios de proteinas: {{intercambiosProteinas.toFixed(0)}}</strong></p>
+           <label> alimentos proteicos I </label>
+          <input type="number" [(ngModel)]="alimentosproteicosI" name="alimentosproteicosI" required>
+
+          <label>  alimentos proteicos II:  </label>
+           <input type="number" [(ngModel)]="alimentosproteicosII" name="alimentosproteicosII" required>
+
+
+           <label> alimentos proteicos III: </label>
+           <input type="number" [(ngModel)]="alimentosproteicosIII" name="alimentosproteicosIII" required>
+
+           <label>  alimentos proteicos IV:  </label>
+           <input type="number" [(ngModel)]="alimentosproteicosIV" name="alimentosproteicosIV" required>
+
+
+           <label> alimentos proteicos V: </label>
+           <input type="number" [(ngModel)]="alimentosproteicosV" name="alimentosproteicosV" required>
+
+
+
+
+
+
+           <div class="botones">
+            <button (click)="calcularIntercambiosProteinas()">Calcular</button>
+            <button type="reset">Limpiar</button>
+          </div>
+        </form>
+
+
+        </div>
+     </div>
+  </div>
+</div>

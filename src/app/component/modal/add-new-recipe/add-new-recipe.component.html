@@ -1,0 +1,91 @@
+<div class="modal">
+  <div class="interno">
+    <header>
+      <button class="btn-close" mat-dialog-close>X</button>
+    </header>
+
+    <body>
+      <form (ngSubmit)="agregarItem()">
+        <input type="text" [(ngModel)]="nuevoItem.imagen" placeholder="url" name="imagen">
+        <input type="text" [(ngModel)]="nuevoItem.titulo" placeholder="nombre de la receta" name="titulo">
+
+        <input id="proteina" type="text" placeholder="proteina" [(ngModel)]="nuevoItem.macronutrientes.proteinas"
+          name="proteina">
+
+
+        <input id="grasa" type="text" placeholder="grasas" [(ngModel)]="nuevoItem.macronutrientes.grasas" name="grasa">
+
+        <input id="hc" type="text" placeholder="HC" [(ngModel)]="nuevoItem.macronutrientes.HC" name="hc">
+        <input type="text" [(ngModel)]="nuevoItem.tiempo" placeholder="tiempo de elaboracion" name="tiempo">
+
+        <div class="customCheckBoxHolder">
+
+          <input id="cCB1" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.renal"
+            name="renal" value="Renal">
+          <label for="cCB1" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">Renal</div>
+            </div>
+          </label>
+
+
+          <input id="cCB2" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.diabetes"
+            name="diabetes" value="Diabetes">
+          <label for="cCB2" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">Diabetes</div>
+            </div>
+          </label>
+
+          <input id="cCB3" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.cardiovascular"
+            name="diabetes" value="Diabetes">
+          <label for="cCB3" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">Cardiovascular</div>
+            </div>
+          </label>
+
+          <input id="cCB4" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.hepatica"
+            name="diabetes" value="Diabetes">
+          <label for="cCB4" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">Hepática</div>
+            </div>
+          </label>
+
+          <input id="cCB5" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.intestinal"
+            name="diabetes" value="Diabetes">
+          <label for="cCB5" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">Intestinal</div>
+            </div>
+          </label>
+
+          <input id="cCB6" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.bariatrica"
+            name="diabetes" value="Diabetes">
+          <label for="cCB6" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">Bariátrica</div>
+            </div>
+          </label>
+          <input id="cCB7" class="customCheckBoxInput" type="checkbox" [(ngModel)]="nuevoItem.enfermedad.lcd"
+            name="diabetes" value="Diabetes">
+          <label for="cCB7" class="customCheckBoxWrapper">
+            <div class="customCheckBox">
+              <div class="inner">LCD</div>
+            </div>
+          </label>
+        </div>
+
+        <input id="ingredientes" type="text" placeholder="ingredientes" [(ngModel)]="nuevoItem.ingredientes"
+          name="ingredientes">
+
+        <input id="receta" type="text" placeholder="receta" [(ngModel)]="nuevoItem.receta"
+          name="receta">
+
+        <button class="btn-guardar" type="submit" [mat-dialog-close]="true">Guardar</button>
+      </form>
+
+    </body>
+  </div>
+</div>

@@ -1,0 +1,48 @@
+.contenedor {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../../assets/fondo4.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 87vh;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 1.2em;
+  margin-top: 20px;
+  background-color: white;
+  border: 4px solid #333;
+   border-radius: 15px;
+ }
+
+th,
+td {
+  padding: 10px;
+   border-bottom: 1px solid #ddd;
+  text-align: center;
+}
+
+th {
+  background-color: #333;
+  color: white;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td:first-child {
+  font-weight: bold;
+}
+
+td:not(:first-child) {
+  text-align: center;
+}
