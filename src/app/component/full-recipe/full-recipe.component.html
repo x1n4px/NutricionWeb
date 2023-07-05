@@ -10,10 +10,17 @@
       <div class="informacion">
         <p>Enfermedades: {{ selectedOption.join(', ')}}</p>
         <p>Tiempo de preparación: {{ Receta[0].tiempo }}</p>
-        <p>Macros: P: {{ Receta[0].macronutrientes.proteinas }} G: {{ Receta[0].macronutrientes.grasas }} HC: {{ Receta[0].macronutrientes.HC }}</p>
-        <p>Ingredientes: {{Receta[0].ingredientes}}</p>
-        <p>Receta: {{ Receta[0].receta }}</p>
-      </div>
+        <p>Macros: P: {{ Receta[0].macronutrientes.proteinas }} G: {{ Receta[0].macronutrientes.grasas }} HC: {{ Receta[0].macronutrientes.HC }} por cada 100gr.</p>
+        <p>Ingredientes:</p>
+          <ul>
+            <li *ngFor="let ingrediente of Receta[0].ingredientes">{{ingrediente}}</li>
+          </ul>
+
+        <div class="contenedorReceta">
+          <div class="receta" [innerHTML]="Receta[0].receta"></div>
+
+        </div>
+       </div>
     </div>
   </div>
 </div>

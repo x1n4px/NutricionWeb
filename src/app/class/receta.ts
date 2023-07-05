@@ -6,8 +6,8 @@ export class Receta {
     grasas: string;
     HC: string;
   };
-  receta!: string;
-  ingredientes!: string;
+  receta!: any;
+  ingredientes!: string[];
   tiempo!: string;
   enfermedad: {
     renal: boolean;
@@ -26,7 +26,7 @@ export class Receta {
     grasas: string,
     HC: string,
     receta: string,
-    ingredientes: string,
+    ingredientes: string[],
     tiempo: string,
     renal:boolean,
     diabetes: boolean,

@@ -12,7 +12,7 @@ export class AddNewRecipeComponent {
 
   datos: any[] = [];
   showModal: boolean = false;
-  nuevoItem: Receta = new Receta('', '', '', '', '', '', '','', false, false, false, false, false, false, false);
+  nuevoItem: Receta = new Receta('', '', '', '', '', '', [''],'', false, false, false, false, false, false, false);
   seleccionados: string[] = [];
 
   constructor(
